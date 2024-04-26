@@ -59,7 +59,7 @@ export default {
   <VTable class="styled-table">
     <thead>
       <tr>
-        <th></th>
+        <!-- <th></th> -->
         <th>
           Inicio do incidente
         </th>
