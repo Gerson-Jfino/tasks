@@ -75,6 +75,9 @@ export default {
         <th>
           Resolução
         </th>
+        <th>
+          Submetido por:
+        </th>
         <!-- <th>
           Solicitante
         </th>
@@ -95,6 +98,7 @@ export default {
         <td>{{ item.incident }}</td>
         <td>{{ item.description }}</td>
         <td> {{ item.resolution }}</td>
+        <td> {{ item.user }}</td>
 
         <!-- <td>
           <v-btn :style="getStatusStyle(item.status_id)" rounded small color="#E5153D"

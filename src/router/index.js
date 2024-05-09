@@ -39,6 +39,11 @@ const router = createRouter({
           name: 'incidentes'
         },
         {
+          path: 'incidentes/adicionar',
+          component: () => import('../pages/incidentForm.vue'),
+          name: 'incidentes.add'
+        },
+        {
           path: 'actividades/adicionar',
           component: () => import('../pages/actividadeForm.vue'),
         },

@@ -66,7 +66,7 @@ export default {
         <v-card-text>
           <VRow>
             <VCol cols="3">
-              <v-btn prepend-icon="mdi-add" style="margin-right: 10px;" to="/actividades/adicionar"
+              <v-btn prepend-icon="mdi-add" style="margin-right: 10px;" to="/incidentes/adicionar"
                 block="">Adiconar</v-btn>
             </VCol>
             <!-- <VCol>
