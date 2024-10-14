@@ -20,14 +20,7 @@ const upgradeBanner = computed(() => {
 const user = ref({})
 
 const getProfile = () => {
-  const config = {
-    headers: { Authorization: `Bearer ${sessionStorage.getItem("TOKEN_AUTH")}` }
-  };
-  api.get("/users/me", config).then((res) => {
-    user.value = res.data
-  }).catch((error) => {
-    console.log(error)
-  })
+  
 }
 
 onMounted(() => {
@@ -55,27 +48,29 @@ onMounted(() => {
     </template>
 
     <template #vertical-nav-content>
-      <VerticalNavLink v-if="user.role_id == '1'" :item="{
+      <VerticalNavLink  :item="{
         title: 'Dashboard',
         icon: 'bx-home',
         to: '/dashboard',
 
       }" />
-
+      
+      
       <VerticalNavLink :item="{
-        title: 'Actividades',
-        icon: 'bx-book',
-        to: '/actividades',
-      }" />
-      <VerticalNavLink :item="{
-        title: 'Incidentes',
-        icon: 'bx-book',
-        to: '/incidentes',
-      }" />
-      <VerticalNavLink v-if="user.role_id == '1'" :item="{
-        title: 'Utilizadores',
+        title: 'Users',
         icon: 'bx-user',
         to: '/utilizadores',
+      }" />
+
+      <VerticalNavLink :item="{
+        title: 'Pages',
+        icon: 'bx-book',
+        to: '/#',
+      }" />
+      <VerticalNavLink :item="{
+        title: 'Photos',
+        icon: 'bx-book',
+        to: '/#',
       }" />
     </template>
 

@@ -49,12 +49,12 @@ const handleNavScroll = evt => {
     <div class="nav-header">
       <slot name="nav-header">
         <RouterLink to="/" class="app-logo d-flex align-center gap-x-3 app-title-wrapper">
-          <img src="../../assets/logo.png" width="120" height="auto" alt="">
+          <img src="../../assets/logo.webp" width="120" height="auto" alt="">
         </RouterLink>
       </slot>
     </div>
     <h3 style="padding-left: 30px; padding-top: 20px;">
-      EasyTasks
+      AppName
     </h3>
     <slot name="before-nav-items">
       <div class="vertical-nav-items-shadow" />

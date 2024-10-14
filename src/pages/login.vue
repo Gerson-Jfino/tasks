@@ -19,31 +19,9 @@ const disabled = ref(false)
 const isPasswordVisible = ref(false)
 
 const submitLogin = () => {
-  loading.value = true
-  disabled.value = true
-  api.post("/users/login", form.value)
-    .then((res) => {
-      loading.value = false
-      disabled.value = false
-      sessionStorage.setItem("TOKEN_AUTH", res.data.access_token)
-      router.push('/actividades')
-    })
-    .catch((error) => {
-      Swal.fire({
-        title: "O processo falhou!",
-        html: `${error.response.data.error}`,
-        icon: "warning",
-        confirmButtonText: "Ok",
-        confirmButtonColor: "#FF4500",
-      });
-      loading.value = false
-      disabled.value = false
-    })
-    .finally((error) => {
-      console.log(error)
-      loading.value = false
-      disabled.value = false
-    })
+  console.log("setup login function");
+  router.push("dashboard")
+  
 }
 </script>
 
@@ -53,7 +31,7 @@ const submitLogin = () => {
       <VCardItem class="justify-center">
         <template #prepend>
           <div class="d-flex">
-            <img src="../assets/logo.png" width="130" height="auto" alt="">
+            <!-- <img src="../assets/logo.png" width="130" height="auto" alt=""> -->
           </div>
         </template>
 
@@ -62,7 +40,7 @@ const submitLogin = () => {
 
       <VCardText class="pt-2">
         <h5 class="text-h5 mb-1 titulo text-center">
-          Gestão de Tarefas
+          App title
         </h5>
         <p class="paragrafo">
           Inicie sessão para continuar.

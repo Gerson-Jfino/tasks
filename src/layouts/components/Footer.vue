@@ -5,7 +5,6 @@
       &copy;
       {{ new Date().getFullYear() }}
       
-     EDM
     </span>
   </div>
 </template>

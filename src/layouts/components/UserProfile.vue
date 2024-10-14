@@ -1,22 +1,15 @@
 <script setup>
 import api from '@/config/api';
 import { onMounted, ref } from 'vue';
-import avatar1 from '../../assets/logo.png';
+import avatar1 from '../../assets/logo.webp';
 const user = ref({})
 
 const getProfile = () => {
-  const config = {
-    headers: { Authorization: `Bearer ${sessionStorage.getItem("TOKEN_AUTH")}` }
-  };
-  api.get("/users/me", config).then((res) => {
-    user.value = res.data
-  }).catch((error) => {
-    console.log(error)
-  })
+  
 }
 
 onMounted(() => {
-  getProfile()
+ 
 })
 </script>
 
@@ -41,10 +34,10 @@ onMounted(() => {
             </template>
 
             <VListItemTitle class="font-weight-semibold">
-              {{ user.name }}
+              User Name
             </VListItemTitle>
-            <VListItemSubtitle v-if="user.role_id = 1">Admin</VListItemSubtitle>
-            <VListItemSubtitle v-else>Admin</VListItemSubtitle>
+            <VListItemSubtitle>Admin</VListItemSubtitle>
+            // <VListItemSubtitle>Admin</VListItemSubtitle>
           </VListItem>
           <VDivider class="my-2" />
           <VListItem to="/login">

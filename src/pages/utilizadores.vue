@@ -10,7 +10,7 @@ export default {
     return {
       status: [],
       status_id: "",
-      activities: [],
+      users: [],
       loading: false,
       users: [
 
@@ -23,17 +23,37 @@ export default {
         this.status = res.data
       })
     },
-    getAllActivties() {
+    getAllUsers() {
       this.loading = true
-      const config = {
-        headers: { Authorization: `Bearer ${sessionStorage.getItem("TOKEN_AUTH")}` }
-      };
-      api.get("/users", config).then((res) => {
-        this.users = res.data
-        this.loading = false
-      }).catch((error) => {
-        this.loading = false
-      })
+      console.log("get users functon");
+      this.users = [
+        {
+          name: 'user name',
+          email: 'email@emal.com',
+          created_at: '01-01-2024 12:00:00',
+          role: 'Admin',
+        },
+        {
+          name: 'user name2',
+          email: 'email@emal.com',
+          created_at: '01-01-2024 12:00:00',
+          role: 'Admin',
+        },
+        {
+          name: 'user name3',
+          email: 'email@emal.com',
+          created_at: '01-01-2024 12:00:00',
+          role: 'Admin',
+        },
+        {
+          name: 'user name4',
+          email: 'email@emal.com',
+          created_at: '01-01-2024 12:00:00',
+          role: 'Admin',
+        },
+      ]
+      this.loading = false
+      
     },
     changeStatus() {
       console.log(this.status_id)
@@ -44,7 +64,7 @@ export default {
   },
   created() {
     this.getStatus()
-    this.getAllActivties()
+    this.getAllUsers()
   },
   watch: {
     status_id(newV, old) {
@@ -63,29 +83,57 @@ export default {
 <template>
   <VRow>
     <VCol cols="12">
-      <v-btn prepend-icon="mdi-add" style="margin-right: 10px;" to="/utilizadores/adicionar">Atribuir
-        acesso administrador</v-btn>
+      <v-card>
+        <v-card-text>
+          <VRow>
+            <VCol cols="6">
+
+              <VTextField v-model="name" item-title="name" item-value="name"
+                    label="Search" append-icon="mdi-search"></VTextField>
+            </VCol>
+            <VCol cols="3">
+              <v-btn prepend-icon="mdi-add" style="margin-right: 10px;" to="/utilizadores/adicionar">Add users</v-btn>
+            </VCol>
+          </VRow>
+
+        </v-card-text>
+      </v-card>
+    </VCol>
+    <VCol cols="12">
+      
       <div class="" style="height: 10px;"></div>
       <VCard title="Utilizadores">
         <v-table class="styled-table">
           <thead>
             <tr>
               <th class="text-left">
-                Nome do Trabalhador
+                Name
               </th>
               <th class="text-left">
-                E-mail
+                Email
               </th>
               <th class="text-left">
-                Nivel
+                Create at
+              </th>
+              <th class="text-left">
+                Role
               </th>
             </tr>
           </thead>
           <tbody>
             <tr v-for="item in users" :key="item.name">
-              <td>{{ item.name }}</td>
-              <td>{{ item.email }}</td>
-              <td>{{ item.role.name }}</td>
+              <td>
+                {{ item.name }}
+              </td>
+              <td>
+                {{ item.email }}
+              </td>
+              <td>
+                {{ item.created_at }}
+              </td>
+              <td>
+                {{ item.role }}
+              </td>
             </tr>
           </tbody>
         </v-table>

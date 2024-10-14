@@ -29,33 +29,8 @@ const router = createRouter({
           component: () => import('../pages/cards.vue'),
         },
         {
-          path: 'actividades',
-          component: () => import('../pages/actividades.vue'),
-          name: 'activities'
-        },
-        {
-          path: 'incidentes',
-          component: () => import('../pages/incidentes.vue'),
-          name: 'incidentes'
-        },
-        {
-          path: 'incidentes/adicionar',
-          component: () => import('../pages/incidentForm.vue'),
-          name: 'incidentes.add'
-        },
-        {
-          path: 'actividades/adicionar',
-          component: () => import('../pages/actividadeForm.vue'),
-        },
-        {
           path: 'utilizadores/adicionar',
           component: () => import('../pages/utilizadoresForm.vue'),
-        },
-        {
-          path: 'actividades/detalhes/:id',
-          component: () => import('../pages/actividadeDetalhes.vue'),
-          name: 'actividades.detalhes',
-          props: true
         },
         {
           path: 'utilizadores',

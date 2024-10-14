@@ -5,7 +5,7 @@ import { onMounted, ref } from 'vue';
 import { useRouter } from 'vue-router';
 
 const status = ref([])
-const form = 
+const form = ref(
   {
     id: null,
     incident: '',
@@ -14,6 +14,7 @@ const form =
     start: null,
     end: null,
   }
+)
 
 
 const tipos = ref([
@@ -100,25 +101,22 @@ const submit = () => {
   const config = {
     headers: { Authorization: `Bearer ${sessionStorage.getItem("TOKEN_AUTH")}` }
   };
-//   const formData = new FormData();
-//   formData.append("name", form.value.name)
-//   formData.append("manager", form.value.manager)
-//   formData.append("status_id", form.value.status_id)
-//   formData.append("owner", form.value.owner)
-//   formData.append("start_date", form.value.start_date)
-//   formData.append("due_date", form.value.due_date)
+  const formData = new FormData();
+  // formData.append("id", form.value.name)
+  formData.append("incident", form.value.incident)
+  formData.append("description", form.value.description)
+  formData.append("resolution", form.value.resolution)
+  formData.append("start", form.value.start)
+  formData.append("end", form.value.end)
 //   formData.append("final_date", form.value.final_date)
 //   formData.append("status_situation", form.value.status_situation)
 //   formData.append("tipo_actividade", form.value.tipo_actividade)
-//   if (form.value.document != null) {
-//     formData.append('document', form.document);
-//   }
-  //formData.append("document", form.document)
-  api.post("/incident", form, config)
+/
+  api.post("/incident", formData, config)
     .then((res) => {
       Swal.fire({
         icon: 'success',
-        title: 'Actividade cadastrada com Sucesso',
+        title: 'Incidente cadastrado com Sucesso',
       });
       loading.value = false
       router.push("/incidentes")
@@ -151,21 +149,21 @@ onMounted(() => {
             </VCol>
             
           <VCol md="3" cols="12">
-            <VTextField label="Incidente" v-model="form.incident" />
+            <VTextField hide-details="auto" label="Incidente" v-model="form.incident" />
           </VCol>
           <VCol md="6" cols="12">
-            <VTextarea label="Descrição" v-model="form.description" />
+            <VTextarea label="Descrição" v-model="form.description" v-bind:value="form.description"/>
           </VCol>
          
 
           
           <VCol md="6" cols="12">
-            <VTextarea label="Resolução" v-model="form.resolution" />
+            <VTextarea label="Resolução" v-model="form.resolution"/>
           </VCol>
 
           <VCol cols="12" class="d-flex flex-wrap gap-4">
             <VBtn @click="submit()">Submeter</VBtn>
-            <VBtn color="secondary" variant="tonal" type="reset" @click.prevent="resetForm">
+            <VBtn color="secondary" variant="tonal" type="reset">
               Cancelar
             </VBtn>
           </VCol>
